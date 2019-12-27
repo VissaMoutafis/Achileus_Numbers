@@ -50,18 +50,14 @@ unsigned int _gcd(unsigned int a, unsigned int b)
 }
 int main()
 {
-	srand((unsigned int ) 1572712634);
 	unsigned int counter = 0;
 	short int isPowerful,isPP, gcd;
 	unsigned int power = 0; 
-	unsigned int n,y,z,x;
+	unsigned int n;
 	unsigned int num;
 	for(num = 3; num < MAX; num++)
 	{
-		 y = rand();
-		 z = rand();
-		x= ((y % 32768) + 1)*((z % 32768) + 1) + 1;
-		n = x;
+		n = num;
 		isPowerful = 1;
 		gcd = 0;
 		if(!isPrime(n))
