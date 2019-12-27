@@ -2,41 +2,9 @@
 #include <math.h>
 #include <time.h>
 #include <stdlib.h>
-#define MAX 100000000
+#define MAX 10000000
 
-int isPrime(unsigned int num)
-{
-	//check if the number is below zero
-    if(num == 1)
-        return 0;
-    if(num%2 == 0)
-    {
-        if(num == 2)
-            return 1;
-        else
-            return 0;
-    }
-    else if(num%3 == 0)
-    {
-        if(num == 3)
-            return 1;
-        else
-            return 0;
-    }
-    else
-    {
-        for(unsigned int i = 5; i*i <= num; i+=6)
-        {
-            if(num%i == 0 || num%(i+2) == 0)
-            {
-                return 0;
-            }
-        }
-    }
-
-    return 1;
-}
-unsigned int _gcd(unsigned int a, unsigned int b)
+short int _gcd(short int a, short int b)
 {
 	unsigned int t = b;
 	while(a && b){
@@ -50,8 +18,9 @@ unsigned int _gcd(unsigned int a, unsigned int b)
 }
 int main()
 {
+	srand((unsigned int ) 1572712634);
 	unsigned int counter = 0;
-	short int isPowerful,isPP, gcd;
+	short int isPowerful, gcd, isPrime;
 	unsigned int power = 0; 
 	unsigned int n;
 	unsigned int num;
@@ -60,7 +29,27 @@ int main()
 		n = num;
 		isPowerful = 1;
 		gcd = 0;
-		if(!isPrime(n))
+		//////////////////////
+		//check if the number is prime
+		isPrime = 1;
+	    if(n == 1)
+	        isPrime = 0;
+	    else if(n%2 == 0 && n > 4)
+			isPrime = 0;
+	   	else if(n%3 == 0 && n > 9)
+	        isPrime = 0;
+	    else
+	    {
+		    for(unsigned int i = 5;isPrime == 1 && i*i <= n; i+=6)
+		    {
+		        if(n%i == 0 || n%(i+2) == 0)
+		        {
+		            isPrime = 0;
+		        }
+		    }
+		}
+		/////////////////////
+		if(!isPrime)
 		{
 			if(n % 2 == 0) 
 			{ 
@@ -88,7 +77,7 @@ int main()
 		        else
 		        	gcd = _gcd(gcd, power);
 	    	} 
-
+	    	
 		    if(isPowerful)
 		    {
 		    	for(unsigned int factor = 5; factor*factor <= n; factor += 6) 
@@ -119,12 +108,12 @@ int main()
 			    }
 		    }
 
-		    if(isPowerful && gcd == 1 && n == 1)
+		    if(n == 1 && isPowerful && gcd == 1)
 		    {
-		    	printf("%d is a achilleus number!\n",num );
+		    	//printf("%d is achilleus number\n",num );
 		    	counter++;
 		    }
-		}	
+		}
 	}
-printf("%d achilleus numbers up to %u\n",counter,MAX);
+printf("\nFound %d achilleus numbers up to %d\n",counter, MAX);
 }
