@@ -121,7 +121,7 @@ int main()
 
 		    if(isPowerful && gcd == 1 && n == 1)
 		    {
-		    	printf("%d\n",x );
+		    	printf("%d\n",num );
 		    	counter++;
 		    }
 		}	
