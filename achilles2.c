@@ -2,7 +2,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdlib.h>
-#define MAX 10000000
+#define MAX 100000000
 
 int isPrime(unsigned int num)
 {
@@ -121,10 +121,10 @@ int main()
 
 		    if(isPowerful && gcd == 1 && n == 1)
 		    {
-		    	printf("%d\n",num );
+		    	printf("%d is a achilleus number!\n",num );
 		    	counter++;
 		    }
 		}	
 	}
-printf("%d\n",counter);
+printf("%d achilleus numbers up to %u\n",counter,MAX);
 }
